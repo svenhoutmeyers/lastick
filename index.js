@@ -3,12 +3,14 @@ const path = require('path')
 
 // Require the fastify framework and instantiate it
 const fastify = require('fastify')({
-  logger: true,
-  https: {
-    key: fs.readFileSync(path.join(__dirname, '.', 'https', 'ssl.key')),
-    cert: fs.readFileSync(path.join(__dirname, '.', 'https', 'ssl.crt'))
-  }
+  logger: true
 })
+/*
+https: {
+  key: fs.readFileSync(path.join(__dirname, '.', 'https', 'ssl.key')),
+  cert: fs.readFileSync(path.join(__dirname, '.', 'https', 'ssl.crt'))
+}
+*/
 
 // Require external modules
 const mongoose = require('mongoose')
