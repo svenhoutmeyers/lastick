@@ -27,8 +27,6 @@ const db = require('./config/db_heroku');
 // Register Swagger
 fastify.register(require('fastify-swagger'), swagger.options)
 
-process.env.JWT_KEY = 'WV3-4xDQxXkvYGJulC8Y5XOjL0HNV09B4xfHeoGTM4RQhU9fp5eAaGRe6cAtEybH';
-
 // Connect to DB
 mongoose.connect(db.url)
   .then(() => console.log('MongoDB connected...'))
