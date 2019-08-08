@@ -12,11 +12,14 @@ const routes = require('./routes')
 // Import Swagger Options
 const swagger = require('./config/swagger')
 
+// Import DB Connection
+const db = require('./config/db');
+
 // Register Swagger
 fastify.register(require('fastify-swagger'), swagger.options)
 
 // Connect to DB
-mongoose.connect('mongodb://localhost/lastickets')
+mongoose.connect(db.url)
   .then(() => console.log('MongoDB connected...'))
   .catch(err => console.log(err))
 
