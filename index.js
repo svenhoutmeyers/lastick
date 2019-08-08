@@ -5,8 +5,8 @@ const path = require('path')
 const fastify = require('fastify')({
   logger: true,
   https: {
-    key: fs.readFileSync(path.join(__dirname, '..', 'src', 'ssl.key')),
-    cert: fs.readFileSync(path.join(__dirname, '..', 'src', 'ssl.crt'))
+    key: fs.readFileSync(path.join(__dirname, '.', 'https', 'ssl.key')),
+    cert: fs.readFileSync(path.join(__dirname, '.', 'https', 'ssl.crt'))
   }
 })
 
