@@ -20,7 +20,7 @@ const routes = require('./routes')
 const swagger = require('./config/swagger')
 
 // Import DB Connection
-const db = require('./config/db');
+const db = require('./config/db_heroku');
 
 // Register Swagger
 fastify.register(require('fastify-swagger'), swagger.options)
