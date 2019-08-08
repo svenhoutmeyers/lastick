@@ -1,6 +1,8 @@
 // Import our Controllers
 const ticketController = require('../controllers/ticketController')
 
+const checkAuth = require('../middleware/check-auth')
+
 const routes = [
   {
     method: 'GET',
@@ -15,16 +17,19 @@ const routes = [
   {
     method: 'POST',
     url: '/api/tickets',
+    preValidation: checkAuth,
     handler: ticketController.addTicket,
     schema: ticketController.addTicketSchema
   },
   {
     method: 'PUT',
     url: '/api/tickets/:id',
+    preValidation: checkAuth,
     handler: ticketController.updateTicket
   },
   {
     method: 'DELETE',
+    preValidation: checkAuth,
     url: '/api/tickets/:id',
     handler: ticketController.deleteTicket
   }

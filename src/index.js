@@ -1,6 +1,13 @@
+const fs = require('fs')
+const path = require('path')
+
 // Require the fastify framework and instantiate it
 const fastify = require('fastify')({
-  logger: true
+  logger: true,
+  https: {
+    key: fs.readFileSync(path.join(__dirname, '..', 'src', 'ssl.key')),
+    cert: fs.readFileSync(path.join(__dirname, '..', 'src', 'ssl.crt'))
+  }
 })
 
 // Require external modules
@@ -17,6 +24,8 @@ const db = require('./config/db');
 
 // Register Swagger
 fastify.register(require('fastify-swagger'), swagger.options)
+
+process.env.JWT_KEY = 'WV3-4xDQxXkvYGJulC8Y5XOjL0HNV09B4xfHeoGTM4RQhU9fp5eAaGRe6cAtEybH';
 
 // Connect to DB
 mongoose.connect(db.url)
